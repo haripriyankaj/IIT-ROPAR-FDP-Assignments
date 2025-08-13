@@ -1,0 +1,226 @@
+/* CARD GRID - Always Three Columns on Desktop */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* exactly 3 columns */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Make two columns on tablets, one on mobile */
+@media (max-width: 900px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CARD STYLE - Bright Vibrant Colors */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeIn 0.4s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.card:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+}
+
+/* Assignment Title */
+.card h3 {
+    margin: 15px 0;
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Button - Colorful Gradient */
+.card button {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ff6f61, #ff9a76);
+    color: white;
+    border-radius: 30px;
+    border: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.card button:hover {
+    background: linear-gradient(90deg, #ff4d4d, #ff7f50);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* SEARCH BAR - Fresh Colors */
+.search-box input {
+    padding: 14px 20px;
+    width: 380px;
+    max-width: 90%;
+    border: none;
+    border-radius: 35px;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+.search-box input:focus {
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 111, 97, 0.4);
+}
+/* HEADER - Centered Layout */
+header {
+    background: linear-gradient(270deg, #ff6f61, #ff9a76, #ff6f61);
+    background-size: 600% 600%;
+    animation: gradientFlow 10s ease infinite;
+    color: white;
+    padding: 25px 20px;
+    text-align: center; /* center all content */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-bottom: 3px solid rgba(255,255,255,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* SEARCH BOX - Move inside header */
+.search-box {
+    margin-top: 20px;
+    text-align: center;
+}
+.search-box input {
+    padding: 14px 20px;
+    width: 380px;
+    max-width: 90%;
+    border: none;
+    border-radius: 35px;
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+.search-box input:focus {
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 111, 97, 0.4);
+}
+
+
+/* FOOTER - Matching Colors */
+footer {
+    background: linear-gradient(270deg, #ff6f61, #ff9a76, #ff6f61);
+    background-size: 600% 600%;
+    animation: gradientFlow 10s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+
+
+/* ABOUT PAGE */
+.about-section {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 30px;
+    max-width: 900px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.3);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.about-card h2 {
+    color: #ff6f61;
+    margin-top: 0;
+}
+
+.about-card h3 {
+    color: #1a1a2e;
+    margin-top: 20px;
+}
+
+.about-card p {
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-card ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.about-card ul li {
+    margin-bottom: 6px;
+}
+ body{
+    margin: 0;
+ }
+
+ /* Search Box Container */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    width: 100%;
+}
+
+/* Search Input */
+.search-box input {
+    width: 60%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    border-color: #ff6b5c;
+    box-shadow: 0 4px 12px rgba(255, 107, 92, 0.3);
+}

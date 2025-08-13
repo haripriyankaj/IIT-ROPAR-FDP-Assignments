@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDP Assignments Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>FDP Assignments Portfolio</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search assignments...">
+        </div>
+
+        <div id="assignment-list" class="card-container">
+            <div class="spinner"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hari Priyanka J | FDP Assignments Portfolio</p>
+    </footer>
+
+    <script>
+        const container = document.getElementById('assignment-list');
+        const searchInput = document.getElementById('search');
+        let allFiles = [];
+
+        // Load assignments from JSON
+        fetch('pdfs.json')
+            .then(response => response.json())
+            .then(files => {
+                allFiles = files;
+                renderAssignments(allFiles);
+            })
+            .catch(err => {
+                container.innerHTML = '<p>Error loading assignments.</p>';
+                console.error(err);
+            });
+
+        // Search filter
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase().replace(/\s+/g, '');
+            const filtered = allFiles
+                .map((file, idx) => ({ name: file, originalIndex: idx }))
+                .filter(item =>
+                    item.name.toLowerCase().replace(/\s+/g, '').includes(query)
+                );
+            renderAssignments(filtered, true);
+        });
+
+        // Render assignments
+        function renderAssignments(files, isFiltered = false) {
+            container.innerHTML = '';
+            if (files.length === 0) {
+                container.innerHTML = '<p>No matching assignments found.</p>';
+                return;
+            }
+
+            files.forEach((file, index) => {
+                const assignmentNumber = isFiltered ? files[index].originalIndex + 1 : index + 1;
+                const fileName = isFiltered ? file.name : file;
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+            <h3>Assignment ${assignmentNumber}</h3>
+            <a href="pdfs/${encodeURIComponent(fileName)}" target="_blank">
+                <button>Preview PDF</button>
+            </a>
+        `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
